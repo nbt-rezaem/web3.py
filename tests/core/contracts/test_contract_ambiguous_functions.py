@@ -184,6 +184,8 @@ def test_contract_function_methods(string_contract):
     assert get_value_func().call() == 'Hello'
     assert isinstance(set_value_func('Hello World').estimateGas(), int)
     assert isinstance(set_value_func('Hello World').buildTransaction(), dict)
+    assert set_value_func().signature() == 'setValue(string)'
+    assert get_value_func().signature() == 'getValue()'
 
 
 def test_diff_between_fn_and_fn_called(string_contract):

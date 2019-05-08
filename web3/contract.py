@@ -946,6 +946,11 @@ class ContractFunction:
     def factory(cls, class_name, **kwargs):
         return PropertyCheckingFactory(class_name, (cls,), kwargs)(kwargs.get('abi'))
 
+    def signature(self):
+        if self.abi:
+            return abi_to_signature(self.abi)
+        return self.fn_name
+
     def __repr__(self):
         if self.abi:
             _repr = '<Function %s' % abi_to_signature(self.abi)
